@@ -20,6 +20,6 @@ urlpatterns = [
     url(r'resolvers/(?P<ident>.*)', api.ResolverView.as_view()),
     url(r'create', api.ResolverCreate.as_view()),
     url(r'forward/(?P<ident>.*)', views.forwarder, name='forward'),
-    url(r'', views.index, name='index')
+    url(r'^$', views.index, name='index')
     # url(r'^admin/', include(admin.site.urls)),
 ]

@@ -27,9 +27,11 @@ except:
     SECRET_KEY = '*!(vcqpog#=8_pu6-c3qd(1jhe(6i(lvh2qrojd#8l@712!urp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+if not DEBUG:
+    STATIC_ROOT = "/var/www/expndr.me/static/"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
