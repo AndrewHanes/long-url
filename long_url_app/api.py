@@ -25,7 +25,7 @@ class ResolverCreate(views.APIView):
         to = request.query_params['to']
         if to.find("http://") < 0 and to.find("https://") < 0:
             to = "http://" + to
-        ident_length = 50 - len(to)
+        ident_length = 1900 - len(to)
         ip = get_client_ip(request)
         if len(models.Resolver.objects.filter(created_ip=ip)) > 100 and not settings.DEBUG:
             return Response()
@@ -33,8 +33,6 @@ class ResolverCreate(views.APIView):
         if len(has) > 0 and not settings.DEBUG:
             return Response(models.ResolverSerializer(has[0]).data)
         else:
-            if ident_length > 100:
-                raise Exception("Url is too long!")
             data = dict(ident=gen_rand_str(length=ident_length),
                         to=to,
                         created_ip=ip,
