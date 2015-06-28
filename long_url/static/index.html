@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app>
 
 <head>
 
@@ -21,6 +21,9 @@
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="js/urls.js"></script>
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -60,7 +63,7 @@
     </nav>
 
     <!-- Intro Header -->
-    <header class="intro">
+    <header class="intro" ng-controller="longurl_controller">
         <div class="intro-body">
             <div class="container">
                 <div class="row">
@@ -69,16 +72,16 @@
                         <p class="intro-text">A free tool to make your URLs way too long <br></p>
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">http://</span>
-                          <input type="text" class="form-control" placeholder="expnd.me" aria-describedby="basic-addon1">
+                          <input type="text" class="form-control" ng-model='url' aria-describedby="basic-addon1">
                             <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Go!</button>
+                            <button class="btn btn-default" ng-click='get_ident()' type="button">Go!</button>
                           </span>
                         </div>
                         <br />
-                        <div class="input-group">
-                          <input type="text" class="form-control" placeholder="expnd.me" aria-describedby="basic-addon1">
+                        <div class="input-group" ng-show="ident!=''">
+                          <input disabled class="form-control" ng-model="ident" aria-describedby="basic-addon1">
                             <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Copy to Clipboard</button>
+                            <button class="btn btn-default" ng-click='copy()' type="button">Copy to Clipboard</button>
                           </span>
                         </div>
                     </div>

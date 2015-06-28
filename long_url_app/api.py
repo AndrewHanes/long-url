@@ -29,7 +29,7 @@ class ResolverCreate(views.APIView):
             return Response(models.ResolverSerializer(has[0]).data)
         else:
             ident_length = 2000 - len(request.query_params['to'])
-            if len < 100:
+            if ident_length < 100:
                 raise Exception("Url is too long!")
             data = dict(ident=gen_rand_str(length=ident_length),
                         to=request.query_params['to'],
