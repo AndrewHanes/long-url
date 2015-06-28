@@ -5,7 +5,8 @@ function longurl_controller($scope, $http) {
     $scope.get_ident = function() {
         $http.get('../create/?to=' + $scope.url).
             success(function(data) {
-                $scope.ident = data.ident
+                $scope.ident = 'http://expnd.me/forward/' + data.ident;
+                //$scope.ident = data.ident;
             });
         return undefined;
     }
